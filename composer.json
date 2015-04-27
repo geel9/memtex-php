@@ -1,0 +1,25 @@
+{
+    "name": "memtex/memtex",
+    "type": "library",
+    "description": "Networked Mutexes for PHP",
+    "keywords": ["mutex","memtex","networked"],
+    "homepage": "http://github.com/geel9/memtex-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joshua Coffey",
+            "email": "geel@scrap.tf",
+            "homepage": "http://geel.io",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "ext-memcached": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "memtex": "src"
+        }
+    }
+}
