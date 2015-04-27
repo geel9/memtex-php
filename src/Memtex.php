@@ -20,6 +20,8 @@ class Memtex {
 	public function Acquire($name, $timeout = 1, $lifetime = 5){
 		if($this->HasAcquired($name)) return true;
 
+		$memcachedLifetime = ($lifetime == -1) ? 0 : $lifetime; //0 is "infinite length" for memcached.
+
 		$instanceID = $this->$instanceID;
 		$curMTime = microtime(true);
 		$key = $this->keyPrefix . $name;
@@ -36,10 +38,10 @@ class Memtex {
 
 			//currentCas will not be empty if a mutex is released but not expired. Add will still fail even though we can acquire the mutex.
 			if(!empty($currentCas)){
-				$acquired = $this->memcachedClient->cas($currentCas, $key, $instanceID, $lifetime);
+				$acquired = $this->memcachedClient->cas($currentCas, $key, $instanceID, $memcachedLifetime);
 			}
 			else{
-				$acquired = $this->memcachedClient->add($key, $instanceID, $lifetime);
+				$acquired = $this->memcachedClient->add($key, $instanceID, $memcachedLifetime);
 			}
 
 
