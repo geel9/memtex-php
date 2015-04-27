@@ -1,7 +1,7 @@
 {
     "name": "memtex/memtex",
     "type": "library",
-    "description": "Networked Mutexes for PHP",
+    "description": "Networked Mutexes for PHP; can be distributed amongst any other language using available memtex libraries",
     "keywords": ["mutex","memtex","networked"],
     "homepage": "http://github.com/geel9/memtex-php",
     "license": "MIT",
